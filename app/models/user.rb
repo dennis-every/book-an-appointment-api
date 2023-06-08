@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :reservations
+  has_many :reservations, foreign_key: :customer_id
   has_many :places, through: :reservations
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
