@@ -20,7 +20,7 @@ module Api
         @api_v1_user = User.new(api_v1_user_params)
 
         if @api_v1_user.save
-          render json: @api_v1_user, status: :created, location: @api_v1_user
+          render json: @api_v1_user, status: :created, location: api_v1_user_url(@api_v1_user)
         else
           render json: @api_v1_user.errors, status: :unprocessable_entity
         end
@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_user_params
-        params.fetch(:api_v1_user, {})
+        params.require(:user).permit(:name)
       end
     end
   end
