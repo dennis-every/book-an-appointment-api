@@ -38,6 +38,7 @@ module Api
       # DELETE /api/v1/users/1
       def destroy
         @api_v1_user.destroy
+        head :no_content
       end
 
       private
@@ -49,7 +50,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_user_params
-        params.require(:user).permit(:name)
+        params.require(:user).permit(:name, :photo)
       end
     end
   end
