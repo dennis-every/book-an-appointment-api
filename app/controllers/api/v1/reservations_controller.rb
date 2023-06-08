@@ -20,7 +20,7 @@ module Api
         @api_v1_reservation = Reservation.new(api_v1_reservation_params)
 
         if @api_v1_reservation.save
-          render json: @api_v1_reservation, status: :created, location: @api_v1_reservation
+          render json: @api_v1_reservation, status: :created, location: api_v1_reservation_url(@api_v1_reservation)
         else
           render json: @api_v1_reservation.errors, status: :unprocessable_entity
         end
@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_reservation_params
-        params.fetch(:api_v1_reservation, {})
+        params.require(:reservation).permit(:customer_id, :place_id, :start_date, :end_date, :bill)
       end
     end
   end
