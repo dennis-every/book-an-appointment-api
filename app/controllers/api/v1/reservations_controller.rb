@@ -20,7 +20,7 @@ module Api
         @api_v1_reservation = Reservation.new(api_v1_reservation_params)
 
         if @api_v1_reservation.save
-          render json: @api_v1_reservation, status: :created, location: @api_v1_reservation
+          render json: @api_v1_reservation, status: :created, location: api_v1_reservation_url(@api_v1_reservation)
         else
           render json: @api_v1_reservation.errors, status: :unprocessable_entity
         end
