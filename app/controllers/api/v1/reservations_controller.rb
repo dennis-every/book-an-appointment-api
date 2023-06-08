@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_reservation_params
-        params.fetch(:api_v1_reservation, {})
+        params.require(:reservation).permit(:customer_id, :place_id, :start_date, :end_date, :bill)
       end
     end
   end
