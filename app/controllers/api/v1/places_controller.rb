@@ -5,7 +5,7 @@ module Api
 
       # GET /api/v1/places
       def index
-        @api_v1_places = Api::V1::Place.all
+        @api_v1_places = Place.all
 
         render json: @api_v1_places
       end
@@ -17,7 +17,7 @@ module Api
 
       # POST /api/v1/places
       def create
-        @api_v1_place = Api::V1::Place.new(api_v1_place_params)
+        @api_v1_place = Place.new(api_v1_place_params)
 
         if @api_v1_place.save
           render json: @api_v1_place, status: :created, location: @api_v1_place
@@ -44,7 +44,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_api_v1_place
-        @api_v1_place = Api::V1::Place.find(params[:id])
+        @api_v1_place = Place.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

@@ -5,7 +5,7 @@ module Api
 
       # GET /api/v1/reservations
       def index
-        @api_v1_reservations = Api::V1::Reservation.all
+        @api_v1_reservations = Reservation.all
 
         render json: @api_v1_reservations
       end
@@ -17,7 +17,7 @@ module Api
 
       # POST /api/v1/reservations
       def create
-        @api_v1_reservation = Api::V1::Reservation.new(api_v1_reservation_params)
+        @api_v1_reservation = Reservation.new(api_v1_reservation_params)
 
         if @api_v1_reservation.save
           render json: @api_v1_reservation, status: :created, location: @api_v1_reservation
@@ -44,7 +44,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_api_v1_reservation
-        @api_v1_reservation = Api::V1::Reservation.find(params[:id])
+        @api_v1_reservation = Reservation.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

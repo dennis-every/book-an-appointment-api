@@ -5,7 +5,7 @@ module Api
 
       # GET /api/v1/users
       def index
-        @api_v1_users = Api::V1::User.all
+        @api_v1_users = User.all
 
         render json: @api_v1_users
       end
@@ -17,7 +17,7 @@ module Api
 
       # POST /api/v1/users
       def create
-        @api_v1_user = Api::V1::User.new(api_v1_user_params)
+        @api_v1_user = User.new(api_v1_user_params)
 
         if @api_v1_user.save
           render json: @api_v1_user, status: :created, location: @api_v1_user
@@ -44,7 +44,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_api_v1_user
-        @api_v1_user = Api::V1::User.find(params[:id])
+        @api_v1_user = User.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
