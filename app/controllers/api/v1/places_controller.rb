@@ -17,7 +17,7 @@ module Api
 
       # POST /api/v1/places
       def create
-        @current_user = User.first        
+        @current_user = User.first
         @api_v1_place = Place.new(api_v1_place_params.merge(owner: @current_user))
 
         if @api_v1_place.save
@@ -50,7 +50,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_place_params
-        params.require(:place).permit(:name, :location, :rate, :photo)        
+        params.require(:place).permit(:name, :location, :rate, :photo)
       end
     end
   end
