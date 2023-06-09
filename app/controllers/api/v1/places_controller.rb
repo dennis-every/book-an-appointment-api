@@ -16,7 +16,7 @@ module Api
       end
 
       # POST /api/v1/places
-      def create             
+      def create
         @api_v1_place = Place.new(api_v1_place_params)
 
         if @api_v1_place.save
@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_place_params
-        params.require(:place).permit(:owner_id, :name, :location, :rate, :photo)        
+        params.require(:place).permit(:owner_id, :name, :location, :rate, :photo)
       end
     end
   end
