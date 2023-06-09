@@ -20,7 +20,7 @@ module Api
         @api_v1_place = Place.new(api_v1_place_params)
 
         if @api_v1_place.save
-          render json: @api_v1_place, status: :created, location: @api_v1_place
+          render json: @api_v1_place, status: :created, location: api_v1_place_url(@api_v1_place)
         else
           render json: @api_v1_place.errors, status: :unprocessable_entity
         end
@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_place_params
-        params.fetch(:api_v1_place, {})
+        params.require(:place).permit(:owner_id, :name, :location, :rate, :photo)
       end
     end
   end
