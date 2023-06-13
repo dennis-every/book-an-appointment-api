@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :places
       resources :reservations
       resources :users
+      post '/login', to: 'sessions#create'
     end
   end
 end
