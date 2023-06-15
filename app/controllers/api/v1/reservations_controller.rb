@@ -5,7 +5,8 @@ module Api
 
       # GET /api/v1/reservations
       def index
-        @api_v1_reservations = Reservation.all
+        user = User.find_by(id: params[:user_id])
+        @api_v1_reservations = user.reservations
 
         render json: @api_v1_reservations
       end
