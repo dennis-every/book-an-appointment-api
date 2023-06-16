@@ -49,7 +49,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def api_v1_place_params
-        params.require(:place).permit(:owner_id, :name, :location, :rate, :photo)
+        params.require(:place).permit(:owner_id, :description, :location, :rate, :photo)
       end
     end
   end
