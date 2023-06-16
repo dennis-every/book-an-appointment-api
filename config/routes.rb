@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :places      
+      resources :places do
+        resources :reservations, only: [:create]
+      end     
       resources :users do
         resources :reservations, only: [:index]
       end
