@@ -17,11 +17,29 @@ describe Reservation, type: :model do
       User.destroy_all
 
       user = User.create!(name: 'John')
-      place = Place.create!(name: 'La casa escondida', location: 'Peru', owner: user, rate: 200)
-      reservation = Reservation.new(start_date: '31/12/2022', end_date: '31/12/2023', place:, customer: user, bill: 200)
+      place = Place.create!(description: 'La casa escondida', location: 'Peru', owner: user, rate: 200)
+      reservation = Reservation.new(start_date: Date.today + 1.day,
+                                    end_date: Date.today + 2.days,
+                                    place:, customer: user)
       expect(reservation).to be_valid
 
       reservation.end_date = reservation.start_date - 30.days
+      expect(reservation).to_not be_valid
+    end
+
+    it 'validates start_date is not in the past' do
+      Reservation.destroy_all
+      Place.destroy_all
+      User.destroy_all
+
+      user = User.create!(name: 'John')
+      place = Place.create!(description: 'La casa escondida', location: 'Peru', owner: user, rate: 200)
+      reservation = Reservation.new(start_date: Date.today + 1.day,
+                                    end_date: Date.today + 2.days,
+                                    place:, customer: user)
+      expect(reservation).to be_valid
+
+      reservation.start_date = Date.today - 1.day
       expect(reservation).to_not be_valid
     end
   end

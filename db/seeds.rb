@@ -28,3 +28,11 @@ Place.create([
     rate: 80
     },
 ])
+10.times do
+    Reservation.create!(
+        customer: user, 
+        place: Place.all.sample, 
+        start_date: Random.rand(Date.today..(Date.today + 1.week)), 
+        end_date: Random.rand((Date.today + 1.week)..(Date.today + 2.weeks))
+    )
+end
