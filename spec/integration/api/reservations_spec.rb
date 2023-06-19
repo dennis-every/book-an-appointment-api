@@ -10,18 +10,18 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
 
       response '200', 'OK' do
         schema type: :array,
-          items: {
-            type: :object,
-            properties: {
-              id: { type: :integer },
-              customer_id: { type: :integer },
-              place_id: { type: :integer },
-              start_date: { type: :string, format: :date },
-              end_date: { type: :string, format: :date },
-              bill: { type: :number },
-            },
-            required: [:id, :customer_id, :place_id, :start_date, :end_date]
-          }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   customer_id: { type: :integer },
+                   place_id: { type: :integer },
+                   start_date: { type: :string, format: :date },
+                   end_date: { type: :string, format: :date },
+                   bill: { type: :number }
+                 },
+                 required: %i[id customer_id place_id start_date end_date]
+               }
 
         run_test!
       end
@@ -38,22 +38,22 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
           place_id: { type: :integer },
           start_date: { type: :string, format: :date },
           end_date: { type: :string, format: :date },
-          bill: { type: :number },
+          bill: { type: :number }
         },
-        required: [:customer_id, :place_id, :start_date, :end_date]
+        required: %i[customer_id place_id start_date end_date]
       }
 
       response '200', 'OK' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            customer_id: { type: :integer },
-            place_id: { type: :integer },
-            start_date: { type: :string, format: :date },
-            end_date: { type: :string, format: :date },
-            bill: { type: :number },
-          },
-          required: [:id, :customer_id, :place_id, :start_date, :end_date]
+               properties: {
+                 id: { type: :integer },
+                 customer_id: { type: :integer },
+                 place_id: { type: :integer },
+                 start_date: { type: :string, format: :date },
+                 end_date: { type: :string, format: :date },
+                 bill: { type: :number }
+               },
+               required: %i[id customer_id place_id start_date end_date]
 
         run_test!
       end
@@ -69,15 +69,15 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
 
       response '200', 'OK' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            customer_id: { type: :integer },
-            place_id: { type: :integer },
-            start_date: { type: :string, format: :date },
-            end_date: { type: :string, format: :date },
-            bill: { type: :number },
-          },
-          required: [:id, :customer_id, :place_id, :start_date, :end_date]
+               properties: {
+                 id: { type: :integer },
+                 customer_id: { type: :integer },
+                 place_id: { type: :integer },
+                 start_date: { type: :string, format: :date },
+                 end_date: { type: :string, format: :date },
+                 bill: { type: :number }
+               },
+               required: %i[id customer_id place_id start_date end_date]
 
         run_test!
       end

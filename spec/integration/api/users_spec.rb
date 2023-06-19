@@ -8,15 +8,15 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
       response '200', 'OK' do
         schema type: :array,
-          items: {
-            type: :object,
-            properties: {
-              id: { type: :integer },
-              name: { type: :string },
-              photo: { type: :string },
-            },
-            required: [:id, :name]
-          }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   name: { type: :string },
+                   photo: { type: :string }
+                 },
+                 required: %i[id name]
+               }
 
         run_test!
       end
@@ -30,34 +30,34 @@ RSpec.describe 'Api::V1::Users', type: :request do
         type: :object,
         properties: {
           name: { type: :string },
-          photo: { type: :string },
+          photo: { type: :string }
         },
         required: [:name]
       }
 
       response '201', 'Created' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            photo: { type: :string },
-          },
-          required: [:id, :name]
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 photo: { type: :string }
+               },
+               required: %i[id name]
 
         run_test!
       end
 
       response '422', 'Unprocessable Entity' do
         schema type: :object,
-          properties: {
-            errors: {
-              type: :object,
-              properties: {
-                name: { type: :array, items: { type: :string } },
-              }
-            }
-          },
-          required: [:errors]
+               properties: {
+                 errors: {
+                   type: :object,
+                   properties: {
+                     name: { type: :array, items: { type: :string } }
+                   }
+                 }
+               },
+               required: [:errors]
 
         run_test!
       end
@@ -73,12 +73,12 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
       response '200', 'OK' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            photo: { type: :string },
-          },
-          required: [:id, :name]
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 photo: { type: :string }
+               },
+               required: %i[id name]
 
         run_test!
       end

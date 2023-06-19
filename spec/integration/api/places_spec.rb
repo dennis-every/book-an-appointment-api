@@ -8,18 +8,18 @@ RSpec.describe 'api/places', type: :request do
 
       response '200', 'OK' do
         schema type: :array,
-          items: {
-            type: :object,
-            properties: {
-              id: { type: :integer },
-              owner_id: { type: :integer },
-              description: { type: :string },
-              location: { type: :string },
-              rate: { type: :integer },
-              photo: { type: :string }
-            },
-            required: %w[id owner_id description location rate photo]
-          }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   owner_id: { type: :integer },
+                   description: { type: :string },
+                   location: { type: :string },
+                   rate: { type: :integer },
+                   photo: { type: :string }
+                 },
+                 required: %w[id owner_id description location rate photo]
+               }
 
         run_test!
       end
@@ -42,25 +42,25 @@ RSpec.describe 'api/places', type: :request do
 
       response '201', 'Created' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            owner_id: { type: :integer },
-            description: { type: :string },
-            location: { type: :string },
-            rate: { type: :integer },
-            photo: { type: :string }
-          },
-          required: %w[id owner_id description location rate photo]
+               properties: {
+                 id: { type: :integer },
+                 owner_id: { type: :integer },
+                 description: { type: :string },
+                 location: { type: :string },
+                 rate: { type: :integer },
+                 photo: { type: :string }
+               },
+               required: %w[id owner_id description location rate photo]
 
         run_test!
       end
 
       response '422', 'Unprocessable Entity' do
         schema type: :object,
-          properties: {
-            errors: { type: :object }
-          },
-          required: %w[errors]
+               properties: {
+                 errors: { type: :object }
+               },
+               required: %w[errors]
 
         run_test!
       end
@@ -76,15 +76,15 @@ RSpec.describe 'api/places', type: :request do
 
       response '200', 'OK' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            owner_id: { type: :integer },
-            description: { type: :string },
-            location: { type: :string },
-            rate: { type: :integer },
-            photo: { type: :string }
-          },
-          required: %w[id owner_id description location rate photo]
+               properties: {
+                 id: { type: :integer },
+                 owner_id: { type: :integer },
+                 description: { type: :string },
+                 location: { type: :string },
+                 rate: { type: :integer },
+                 photo: { type: :string }
+               },
+               required: %w[id owner_id description location rate photo]
 
         run_test!
       end
