@@ -115,6 +115,126 @@ paths:
       responses:
         '204':
           description: No Content
+  "/api/v1/users/{user_id}/reservations":
+    parameters:
+    - name: user_id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a list of reservations for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    customer_id:
+                      type: integer
+                    place_id:
+                      type: integer
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+                    bill:
+                      type: number
+                  required:
+                  - id
+                  - customer_id
+                  - place_id
+                  - start_date
+                  - end_date
+    post:
+      summary: Create a new reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: integer
+                place_id:
+                  type: integer
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                bill:
+                  type: number
+              required:
+              - customer_id
+              - place_id
+              - start_date
+              - end_date
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Reservation ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a specific reservation for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  place_id:
+                    type: integer
+                  start_date:
+                    type: string
+                    format: date
+                  end_date:
+                    type: string
+                    format: date
+                  bill:
+                    type: number
+                required:
+                - id
+                - customer_id
+                - place_id
+                - start_date
+                - end_date
+    delete:
+      summary: Delete a reservation for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
 servers:
 - url: https://{defaultHost}
   variables:
