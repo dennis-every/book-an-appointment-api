@@ -1,0 +1,324 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/places":
+    get:
+      summary: Retrieves a list of places
+      tags:
+      - Places
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    owner_id:
+                      type: integer
+                    description:
+                      type: string
+                    location:
+                      type: string
+                    rate:
+                      type: integer
+                    photo:
+                      type: string
+                  required:
+                  - id
+                  - owner_id
+                  - description
+                  - location
+                  - rate
+                  - photo
+    post:
+      summary: Creates a new place
+      tags:
+      - Places
+      parameters: []
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                owner_id:
+                  type: integer
+                description:
+                  type: string
+                location:
+                  type: string
+                rate:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - owner_id
+              - description
+              - location
+              - rate
+              - photo
+  "/api/v1/places/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a place by ID
+      tags:
+      - Places
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  owner_id:
+                    type: integer
+                  description:
+                    type: string
+                  location:
+                    type: string
+                  rate:
+                    type: integer
+                  photo:
+                    type: string
+                required:
+                - id
+                - owner_id
+                - description
+                - location
+                - rate
+                - photo
+    delete:
+      summary: Deletes a place
+      tags:
+      - Places
+      responses:
+        '204':
+          description: No Content
+  "/api/v1/users/{user_id}/reservations":
+    parameters:
+    - name: user_id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a list of reservations for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    customer_id:
+                      type: integer
+                    place_id:
+                      type: integer
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+                    bill:
+                      type: number
+                  required:
+                  - id
+                  - customer_id
+                  - place_id
+                  - start_date
+                  - end_date
+    post:
+      summary: Create a new reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: integer
+                place_id:
+                  type: integer
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                bill:
+                  type: number
+              required:
+              - customer_id
+              - place_id
+              - start_date
+              - end_date
+  "/api/v1/reservations/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Reservation ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a specific reservation for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  customer_id:
+                    type: integer
+                  place_id:
+                    type: integer
+                  start_date:
+                    type: string
+                    format: date
+                  end_date:
+                    type: string
+                    format: date
+                  bill:
+                    type: number
+                required:
+                - id
+                - customer_id
+                - place_id
+                - start_date
+                - end_date
+    delete:
+      summary: Delete a reservation for a user
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: OK
+  "/api/v1/users":
+    get:
+      summary: Retrieve a list of users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    photo:
+                      type: string
+                  required:
+                  - id
+                  - name
+    post:
+      summary: Create a new user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                photo:
+                  type: string
+              required:
+              - name
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a specific user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                required:
+                - id
+                - name
+    delete:
+      summary: Delete a specific user
+      tags:
+      - Users
+      responses:
+        '204':
+          description: No Content
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
