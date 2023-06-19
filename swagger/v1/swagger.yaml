@@ -235,6 +235,88 @@ paths:
       responses:
         '200':
           description: OK
+  "/api/v1/users":
+    get:
+      summary: Retrieve a list of users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    photo:
+                      type: string
+                  required:
+                  - id
+                  - name
+    post:
+      summary: Create a new user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                photo:
+                  type: string
+              required:
+              - name
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieve a specific user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                required:
+                - id
+                - name
+    delete:
+      summary: Delete a specific user
+      tags:
+      - Users
+      responses:
+        '204':
+          description: No Content
 servers:
 - url: https://{defaultHost}
   variables:
