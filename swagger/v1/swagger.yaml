@@ -1,0 +1,122 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/places":
+    get:
+      summary: Retrieves a list of places
+      tags:
+      - Places
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    owner_id:
+                      type: integer
+                    description:
+                      type: string
+                    location:
+                      type: string
+                    rate:
+                      type: integer
+                    photo:
+                      type: string
+                  required:
+                  - id
+                  - owner_id
+                  - description
+                  - location
+                  - rate
+                  - photo
+    post:
+      summary: Creates a new place
+      tags:
+      - Places
+      parameters: []
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                owner_id:
+                  type: integer
+                description:
+                  type: string
+                location:
+                  type: string
+                rate:
+                  type: integer
+                photo:
+                  type: string
+              required:
+              - owner_id
+              - description
+              - location
+              - rate
+              - photo
+  "/api/v1/places/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a place by ID
+      tags:
+      - Places
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  owner_id:
+                    type: integer
+                  description:
+                    type: string
+                  location:
+                    type: string
+                  rate:
+                    type: integer
+                  photo:
+                    type: string
+                required:
+                - id
+                - owner_id
+                - description
+                - location
+                - rate
+                - photo
+    delete:
+      summary: Deletes a place
+      tags:
+      - Places
+      responses:
+        '204':
+          description: No Content
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
