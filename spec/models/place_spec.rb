@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Place, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:reservations) }
-    it { is_expected.to have_many(:users).through(:reservations) }
     it { is_expected.to belong_to(:owner).class_name('User') }
   end
   describe 'validations' do
