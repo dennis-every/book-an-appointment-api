@@ -14,10 +14,6 @@ RSpec.describe Api::V1::ReservationsController, type: :routing do
       expect(post: '/api/v1/reservations').to route_to('api/v1/reservations#create')
     end
 
-    it 'routes to #update via PUT' do
-      expect(put: '/api/v1/reservations/1').to route_to('api/v1/reservations#update', id: '1')
-    end
-
     it 'routes to #update via PATCH' do
       expect(patch: '/api/v1/reservations/1').to route_to('api/v1/reservations#update', id: '1')
     end
