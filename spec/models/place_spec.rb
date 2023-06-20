@@ -10,9 +10,9 @@ describe Place, type: :model do
     Place.destroy_all
     User.destroy_all
     user = User.create!(name: 'John')
-    Place.create!(name: 'La casa escondida', location: 'Peru', owner: user, rate: 200)
+    Place.create!(description: 'John - Photographer', location: 'Peru', owner: user, rate: 200)
 
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_uniqueness_of(:name).scoped_to(:location) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_uniqueness_of(:description).scoped_to(:location) }
   end
 end
