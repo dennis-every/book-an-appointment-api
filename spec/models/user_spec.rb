@@ -6,6 +6,7 @@ describe User, type: :model do
     it { is_expected.to have_many(:places).through(:reservations) }
   end
   describe 'validations' do
+    Place.destroy_all
     User.destroy_all
     User.create!(name: 'John')
 

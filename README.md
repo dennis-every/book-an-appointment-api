@@ -122,9 +122,13 @@ To run tests, run the following command:
 
 
 ```sh
-rspec
+rspec spec --exclude-pattern "spec/integration/api/*_spec.rb"
 ```
+To test the API documentation, run the following command:
 
+```sh
+rake rswag:specs:swaggerize
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Authors <a name="author"></a>
