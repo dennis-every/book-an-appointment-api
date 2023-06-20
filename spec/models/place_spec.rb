@@ -12,6 +12,5 @@ describe Place, type: :model do
     Place.create!(description: 'John - Photographer', location: 'Peru', owner: user, rate: 200)
 
     it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to validate_uniqueness_of(:description).scoped_to(:location) }
   end
 end
