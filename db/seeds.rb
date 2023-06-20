@@ -32,7 +32,7 @@ Place.create([
     Reservation.create!(
         customer: user, 
         place: Place.all.sample, 
-        start_date: Random.rand(Date.today..(Date.today + 6.days)), 
+        start_date: Random.rand((Date.today + 1.days)..(Date.today + 6.days)), 
         end_date: Random.rand((Date.today + 1.week)..(Date.today + 2.weeks))
     )
 end
