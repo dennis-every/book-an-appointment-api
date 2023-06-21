@@ -17,8 +17,8 @@
 
 <hr>
 
-<hr>
  [Backend Deployed link](https://boiling-taiga-49294-bcedd3da6f09.herokuapp.com/api-docs/index.html)
+ 
 <hr>
 
 # 📗 Table of Contents
