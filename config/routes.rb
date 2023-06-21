@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         resources :reservations, only: [:index]
       end
       post '/login', to: 'sessions#create'
+      post '/signup', to: 'registrations#create' 
     end
   end
 end
