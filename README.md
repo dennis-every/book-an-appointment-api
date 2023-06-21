@@ -10,9 +10,10 @@
  ## Kanban board
  - [Kanban board Project link](https://github.com/users/dennis-every/projects/3/views/2)
  
+ ### Initial State of Kanban board
  ![](https://user-images.githubusercontent.com/26579035/244144205-94e6ea6d-2116-471c-a58b-b000a8d5a07d.PNG)
 
- Our group remained the same of 4 <a name="author"></a> team members throughout the whole project.
+ Our group remained the same of 4 team members throughout the whole project.
 
 <hr>
 
