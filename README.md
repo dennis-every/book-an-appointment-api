@@ -5,6 +5,17 @@
   <img src="ERD-diagram.png" />
 </div>
 
+<hr>
+
+ ## Kanban board
+ - [Kanban board Project link](https://github.com/users/dennis-every/projects/3/views/2)
+ 
+ ![](https://user-images.githubusercontent.com/26579035/244144205-94e6ea6d-2116-471c-a58b-b000a8d5a07d.PNG)
+
+ Our group remained the same of 4 <a name="author"></a> team members throughout the whole project.
+
+<hr>
+
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
