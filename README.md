@@ -41,7 +41,7 @@
 > The Book an appointment | Places API will provide functionality to create, read, and destroy data related to places. It will serve as the server-side component responsible for handling requests and managing the database. The React client will interact with this backend to perform actions such as creating new places and reservations, see the place details, and removing places from the system.
 
 [Link to the Front End Repo](https://github.com/dennis-every/book-an-appointment-front-end) <br>
-[Backend Deployed link](https://boiling-taiga-49294-bcedd3da6f09.herokuapp.com/api-docs/index.html)
+[Backend Deployed link](http://boiling-taiga-49294-bcedd3da6f09.herokuapp.com/api-docs/index.html)
 
 ## 🛠 Built With <a name="built-with"></a>
 

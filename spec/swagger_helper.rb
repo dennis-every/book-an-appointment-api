@@ -25,7 +25,7 @@ RSpec.configure do |config|
           url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'localhost:3000'
+              default: 'boiling-taiga-49294-bcedd3da6f09.herokuapp.com'
             }
           }
         }
